@@ -1,14 +1,9 @@
-const sidebar = document.getElementById('sidebar');
-const content = document.getElementById('content');
-
-function toggleSidebar() {
-  sidebar.classList.toggle('open');
-  if (sidebar.classList.contains('open')) {
-    content.classList.add('blurred');
-  } else {
-    content.classList.remove('blurred');
-  }
+function abrirSidebar() {
+  document.querySelector('.sidebar').classList.add('open');
+  document.getElementById('content').classList.add('blurred');
 }
 
-
-
+function fecharSidebar() {
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('content').classList.remove('blurred');
+}
