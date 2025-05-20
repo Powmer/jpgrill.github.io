@@ -6,10 +6,7 @@
   <title>JP Churrasco Grill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -28,12 +25,53 @@
       padding: 20px;
       text-align: center;
       border-bottom: 3px solid #ff6600;
+      position: relative;
     }
 
     header img {
       max-width: 200px;
       border: 4px solid white;
       border-radius: 10px;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #1c1c1c;
+      padding: 60px 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      color: #ff6600;
     }
 
     nav {
@@ -73,21 +111,25 @@
     }
 
     .menu-section {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
 
     .menu-item {
       background-color: #1a1a1a;
       border-left: 5px solid #ff6600;
-      margin-bottom: 20px;
       padding: 15px;
       border-radius: 5px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 15px;
+      width: 45%;
+      min-width: 300px;
     }
 
     .menu-item img {
@@ -100,7 +142,6 @@
 
     .menu-content {
       flex-grow: 1;
-      margin-left: 10px;
     }
 
     .menu-content h3 {
@@ -127,12 +168,13 @@
       font-weight: bold;
       font-size: 1em;
       white-space: nowrap;
-      transition: background-color 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
       flex-shrink: 0;
     }
 
     .buy-button:hover {
       background-color: #e67300;
+      transform: scale(1.1);
     }
 
     .contact {
@@ -174,15 +216,20 @@
 </head>
 <body>
   <header>
-    <img
-      src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-f654-61fb-9607-03c4b5f5a1a5/raw?se=2025-05-19T00%3A51%3A36Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-18T23%3A32%3A10Z&ske=2025-05-19T23%3A32%3A10Z&sks=b&skv=2024-08-04&sig=Qdrt%2BpBeSs0mspw6YBgsBnPS6nbvdaRHBj%2BnO05vw%2Bg%3D"
-      alt="Logo JP Churrasco Grill"
-    />
+    <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-f654-61fb-9607-03c4b5f5a1a5/raw?se=2025-05-19T00%3A51%3A36Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-18T23%3A32%3A10Z&ske=2025-05-19T23%3A32%3A10Z&sks=b&skv=2024-08-04&sig=Qdrt%2BpBeSs0mspw6YBgsBnPS6nbvdaRHBj%2BnO05vw%2Bg%3D" alt="Logo JP Churrasco Grill" />
   </header>
+
+  <div class="sidebar">
+    <a href="#">Fazer Pedido</a>
+    <a href="#">Sobre Nós</a>
+    <a href="https://instagram.com" target="_blank">Siga-nos no Insta</a>
+  </div>
 
   <nav>
     <a href="#menu">Cardápio</a>
     <a href="#contato">Contato</a>
+    <a href="#promocoes">Promoções</a>
   </nav>
 
   <div class="hero">
@@ -192,75 +239,43 @@
 
   <section id="menu" class="menu-section">
     <div class="menu-item">
-      <img
-        src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg"
-        alt="Espetinho de Picanha"
-      />
+      <img src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg" alt="Espetinho de Picanha" />
       <div class="menu-content">
         <h3>Espetinho de Picanha</h3>
         <p><strong>R$ 15,99</strong></p>
         <p>Maciez e sabor para o seu churrasco perfeito.</p>
       </div>
-      <a
-        class="buy-button"
-        href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Picanha!"
-        target="_blank"
-        >Comprar</a
-      >
+      <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Picanha!" target="_blank">Comprar</a>
     </div>
 
     <div class="menu-item">
-      <img
-        src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7"
-        alt="Espetinho de Frango"
-      />
+      <img src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7" alt="Espetinho de Frango" />
       <div class="menu-content">
         <h3>Espetinho de Frango</h3>
         <p><strong>R$ 7,99</strong></p>
         <p>Leve, saboroso e bem temperado.</p>
       </div>
-      <a
-        class="buy-button"
-        href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Frango!"
-        target="_blank"
-        >Comprar</a
-      >
+      <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Frango!" target="_blank">Comprar</a>
     </div>
 
     <div class="menu-item">
-      <img
-        src="https://th.bing.com/th/id/R.a424131b93a1c7e3eb3b03d35baf9178?rik=B1cD8JYBcdm9hQ&pid=ImgRaw&r=0"
-        alt="Espetinho de Coração"
-      />
+      <img src="https://th.bing.com/th/id/R.a424131b93a1c7e3eb3b03d35baf9178?rik=B1cD8JYBcdm9hQ&pid=ImgRaw&r=0" alt="Espetinho de Coração" />
       <div class="menu-content">
         <h3>Espetinho de Coração</h3>
         <p><strong>R$ 4,99</strong></p>
         <p>Tradicional e delicioso.</p>
       </div>
-      <a
-        class="buy-button"
-        href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Coração!"
-        target="_blank"
-        >Comprar</a
-      >
+      <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Coração!" target="_blank">Comprar</a>
     </div>
 
     <div class="menu-item">
-      <img
-        src="https://th.bing.com/th/id/OIP.eD8YpKgCEwk7mM-ioPAhxwHaFj?rs=1&pid=ImgDetMain"
-        alt="Espetinho de Queijo Coalho"
-      />
+      <img src="https://th.bing.com/th/id/OIP.eD8YpKgCEwk7mM-ioPAhxwHaFj?rs=1&pid=ImgDetMain" alt="Espetinho de Queijo Coalho" />
       <div class="menu-content">
         <h3>Espetinho de Queijo Coalho</h3>
         <p><strong>R$ 4,99</strong></p>
         <p>Perfeito com melado ou puro na brasa.</p>
       </div>
-      <a
-        class="buy-button"
-        href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Queijo%20Coalho!"
-        target="_blank"
-        >Comprar</a
-      >
+      <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Queijo%20Coalho!" target="_blank">Comprar</a>
     </div>
   </section>
 
@@ -268,6 +283,11 @@
     <h2>Fale Conosco</h2>
     <p>Peça agora pelo WhatsApp!</p>
     <a href="https://wa.me/5521988549335" target="_blank">Chamar no WhatsApp</a>
+  </div>
+
+  <div id="promocoes" class="contact">
+    <h2>Promoções</h2>
+    <p>Em breve novidades deliciosas para você!</p>
   </div>
 
   <footer>
