@@ -22,8 +22,6 @@ header {
 
 header img {
   max-width: 200px;
-  border: 4px solid white;
-  border-radius: 10px;
 }
 
 .menu-toggle {
