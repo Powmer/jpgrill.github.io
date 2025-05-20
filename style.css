@@ -100,7 +100,6 @@ nav a:hover {
 #content {
   position: relative;
   overflow: hidden;
-  height: 300px;
 }
 
 .fade-bg {
