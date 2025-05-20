@@ -1,9 +1,11 @@
-function abrirSidebar() {
-  document.querySelector('.sidebar').classList.add('open');
-  document.getElementById('content').classList.add('blurred');
-}
-
-function fecharSidebar() {
-  document.querySelector('.sidebar').classList.remove('open');
-  document.getElementById('content').classList.remove('blurred');
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const content = document.getElementById('content');
+  if (sidebar.classList.contains('open')) {
+    sidebar.classList.remove('open');
+    content.classList.remove('blurred');
+  } else {
+    sidebar.classList.add('open');
+    content.classList.add('blurred');
+  }
 }
