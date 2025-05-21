@@ -233,7 +233,8 @@ nav a:hover {
 
 .promo-bloco {
   flex: 1;
-  max-width: 300px;
+  min-width: 50px;
+  max-width: 200px;
   transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
 }
