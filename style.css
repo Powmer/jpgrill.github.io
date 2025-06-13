@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  height: 90px; 
+  height: 45px; 
   display: flex;
   justify-content: center;
   align-items: center;
