@@ -44,15 +44,17 @@ header {
 
 .menu-toggle {
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: 20px;              
+  top: 50%;                
+  transform: translateY(-50%); 
   font-size: 24px;
   background: none;
   border: none;
   color: #fff;
   cursor: pointer;
-  z-index: 1012;
+  z-index: 2;
 }
+
 
 .sidebar {
   position: fixed;
