@@ -38,7 +38,7 @@ header {
 .siteimage {
   position: relative;
   z-index: 1011;
-  max-width: 200px;
+  max-width: 90px;
   height: auto;
 }
 
