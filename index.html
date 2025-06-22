@@ -19,7 +19,7 @@
     }
 
     header {
-      height: 45px;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -60,7 +60,7 @@
       left: 20px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 24px;
+      font-size: 28px;
       background: none;
       border: none;
       color: #fff;
@@ -112,6 +112,10 @@
       position: relative;
       overflow: hidden;
       transition: filter 0.3s ease;
+      background-color: #1c1c1c;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 1000px;
     }
 
     .blurred {
@@ -120,12 +124,114 @@
       user-select: none;
     }
 
+    .section {
+      margin: 40px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      color: #ff6600;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .promo-list, .menu-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .promo-item, .menu-item {
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+    }
+
+    .promo-item img, .menu-item img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .buy-button {
+      display: inline-block;
+      background-color: #ff6600;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buy-button:hover {
+      background-color: #e65c00;
+    }
+
+    .instagram-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #E1306C;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 40px auto 0;
+      max-width: 220px;
+    }
+
+    .instagram-button img {
+      width: 24px;
+      height: 24px;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: #000;
       color: #aaa;
       font-size: 0.9em;
+    }
+
+    /* Banners laterais */
+    .banner-lateral {
+      position: fixed;
+      top: 80px;
+      width: 120px;
+      height: 400px;
+      background-color: #333;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9em;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .banner-esquerda {
+      left: 0;
+    }
+
+    .banner-direita {
+      right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .promo-item, .menu-item {
+        width: 100%;
+      }
+
+      .banner-lateral {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -136,7 +242,6 @@
     <img src="logo.png" class="siteimage" />
   </header>
 
-  <!-- side bar -->
   <div class="sidebar" id="sidebar">
     <button class="close-sidebar" onclick="toggleSidebar()">×</button>
     <a href="#">Fazer Pedido</a>
@@ -144,9 +249,51 @@
     <a href="https://instagram.com/powmer_" target="_blank">Siga-nos no Insta</a>
   </div>
 
+  <!-- Banners laterais -->
+  <div class="banner-lateral banner-esquerda">
+    Anúncio<br>Esquerda
+  </div>
+  <div class="banner-lateral banner-direita">
+    Anúncio<br>Direita
+  </div>
+
   <div id="content">
-    <h1 style="text-align:center; margin-top: 100px;">Bem-vindo ao JP Churrasco Grill</h1>
-    <p style="text-align:center;">Clique no botão ☰ para abrir o menu lateral</p>
+    <div class="section">
+      <h2>Promoções</h2>
+      <div class="promo-list">
+        <div class="promo-item">
+          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" />
+          <p>Heineken Long Neck 330ml - R$ 4,99</p>
+        </div>
+        <div class="promo-item">
+          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" />
+          <p>Leve 3, Pague 2!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Cardápio</h2>
+      <div class="menu-list">
+        <div class="menu-item">
+          <img src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg" />
+          <h3>Espetinho de Picanha</h3>
+          <p>R$ 15,99</p>
+          <a class="buy-button" href="#">Comprar</a>
+        </div>
+        <div class="menu-item">
+          <img src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7" />
+          <h3>Espetinho de Frango</h3>
+          <p>R$ 7,99</p>
+          <a class="buy-button" href="#">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="instagram-button" href="https://instagram.com/powmer_" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+      Siga-nos no Instagram
+    </a>
   </div>
 
   <footer>
@@ -172,27 +319,28 @@
       }
     }
 
-    const fadeBg = document.getElementById("fadeBackground");
-    const images = [
-      "topimage(1).jpeg",
-      "topimage(2).jpeg",
-      "topimage(3).jpeg",
-      "topimage(4).jpeg"
-    ];
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeBg = document.getElementById("fadeBackground");
+      const images = [
+        "topimage(1).jpeg",
+        "topimage(2).jpeg",
+        "topimage(3).jpeg",
+        "topimage(4).jpeg"
+      ];
+      let current = 0;
 
-    let current = 0;
+      function updateBackground() {
+        fadeBg.style.opacity = 0;
+        setTimeout(() => {
+          fadeBg.style.backgroundImage = `url(${images[current]})`;
+          fadeBg.style.opacity = 0.4;
+          current = (current + 1) % images.length;
+        }, 1000);
+      }
 
-    function updateBackground() {
-      fadeBg.style.opacity = 0;
-      setTimeout(() => {
-        fadeBg.style.backgroundImage = `url(${images[current]})`;
-        fadeBg.style.opacity = 0.4;
-        current = (current + 1) % images.length;
-      }, 1000);
-    }
-
-    fadeBg.style.backgroundImage = `url(${images[0]})`;
-    setInterval(updateBackground, 5000);
+      fadeBg.style.backgroundImage = `url(${images[0]})`;
+      setInterval(updateBackground, 5000);
+    });
   </script>
 </body>
 </html>
