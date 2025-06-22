@@ -4,17 +4,138 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JP Churrasco Grill</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Barlow Condensed', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    header {
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 1010;
+      background-color: #000;
+      border-bottom: 3px solid #ff6600;
+    }
+
+    .fade-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.4;
+      z-index: 1000;
+      transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+      mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      display: none;
+    }
+
+    .fade-bg.open {
+      display: block;
+    }
+
+    .siteimage {
+      position: relative;
+      z-index: 1011;
+      max-width: 90px;
+      height: auto;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #1c1c1c;
+      padding: 60px 20px 20px 20px;
+      transition: left 0.3s ease;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .close-sidebar {
+      align-self: flex-end;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      color: #ff6600;
+    }
+
+    #content {
+      position: relative;
+      overflow: hidden;
+      transition: filter 0.3s ease;
+    }
+
+    .blurred {
+      filter: blur(2px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
   <header>
-  <div class="fade-bg" id="fadeBackground"></div>
-  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-  <img src="logo.png" class="siteimage" />
-</header>
+    <div class="fade-bg" id="fadeBackground"></div>
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <img src="logo.png" class="siteimage" />
+  </header>
+
   <!-- side bar -->
   <div class="sidebar" id="sidebar">
     <button class="close-sidebar" onclick="toggleSidebar()">×</button>
@@ -22,93 +143,57 @@
     <a href="#">Sobre Nós</a>
     <a href="https://instagram.com/powmer_" target="_blank">Siga-nos no Insta</a>
   </div>
-  <div id="content">
-    <nav>
-      <a href="#menu">Cardápio</a>
-      <a href="#promocoes">Promoções</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <!-- background -->
-<section id="promocoes" class="menu-section">
-      <div class="menu-item" style="justify-content:center;">
-        <h2>Promoções</h2>
-       <p>Em breve novidades aqui!</p>
-      </div>
-      <div class="promocao-blocos">
-        <div class="promocao-container">
-          <div class="promo-bloco">
-            <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promoção 1" />
-          </div>
-          <div class="promo-bloco">
-            <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promoção 2" />
-          </div>
-          <div class="promo-bloco">
-            <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promoção 3" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- cardapio-->
-    <section id="menu" class="menu-section">
-      <div class="menu-item">
-        <img src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg" alt="Espetinho de Picanha" />
-        <div class="menu-content">
-          <h3>Espetinho de Picanha</h3>
-          <p><strong>R$ 15,99</strong></p>
-          <p>Maciez e sabor para o seu churrasco perfeito.</p>
-        </div>
-        <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Picanha!" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Carrinho" width="24" height="24" />
-          Comprar
-        </a>
-      </div>
-      <div class="menu-item">
-        <img src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7" alt="Espetinho de Frango" />
-        <div class="menu-content">
-          <h3>Espetinho de Frango</h3>
-          <p><strong>R$ 7,99</strong></p>
-          <p>Leve, saboroso e bem temperado.</p>
-        </div>
-        <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Frango!" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Carrinho" width="24" height="24" />
-          Comprar
-        </a>
-      </div>
-      <div class="menu-item">
-        <img src="https://th.bing.com/th/id/R.a424131b93a1c7e3eb3b03d35baf9178?rik=B1cD8JYBcdm9hQ&pid=ImgRaw&r=0" alt="Espetinho de Coração" />
-        <div class="menu-content">
-          <h3>Espetinho de Coração</h3>
-          <p><strong>R$ 4,99</strong></p>
-          <p>Tradicional e delicioso.</p>
-        </div>
-        <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Coração!" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Carrinho" width="24" height="24" />
-          Comprar
-        </a>
-      </div>
-      <div class="menu-item">
-        <img src="https://th.bing.com/th/id/OIP.eD8YpKgCEwk7mM-ioPAhxwHaFj?rs=1&pid=ImgDetMain" alt="Espetinho de Queijo Coalho" />
-        <div class="menu-content">
-          <h3>Espetinho de Queijo Coalho</h3>
-          <p><strong>R$ 4,99</strong></p>
-          <p>Perfeito com melado ou puro na brasa.</p>
-        </div>
-        <a class="buy-button" href="https://wa.me/5521988549335?text=Quero%20Espetinho%20de%20Queijo%20Coalho!" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Carrinho" width="24" height="24" />
-          Comprar
-        </a>
-      </div>
-    </section>
 
-    <div id="contato" class="contact">
-      <h2>Fale Conosco</h2>
-      <p>Peça agora pelo WhatsApp!</p>
-      <a href="https://wa.me/5521988549335" target="_blank">Chamar no WhatsApp</a>
-    </div>
+  <div id="content">
+    <h1 style="text-align:center; margin-top: 100px;">Bem-vindo ao JP Churrasco Grill</h1>
+    <p style="text-align:center;">Clique no botão ☰ para abrir o menu lateral</p>
   </div>
+
   <footer>
     &copy; 2025 JP Churrasco Grill. Todos os direitos reservados.
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
+      const fadeBg = document.getElementById('fadeBackground');
+
+      const isOpen = sidebar.classList.contains('open');
+
+      if (isOpen) {
+        sidebar.classList.remove('open');
+        content.classList.remove('blurred');
+        fadeBg.classList.remove('open');
+      } else {
+        sidebar.classList.add('open');
+        content.classList.add('blurred');
+        fadeBg.classList.add('open');
+      }
+    }
+
+    // Imagem de fundo rotativa
+    const fadeBg = document.getElementById("fadeBackground");
+    const images = [
+      "topimage(1).jpeg",
+      "topimage(2).jpeg",
+      "topimage(3).jpeg",
+      "topimage(4).jpeg"
+    ];
+
+    let current = 0;
+
+    function updateBackground() {
+      fadeBg.style.opacity = 0;
+      setTimeout(() => {
+        fadeBg.style.backgroundImage = `url(${images[current]})`;
+        fadeBg.style.opacity = 0.4;
+        current = (current + 1) % images.length;
+      }, 1000);
+    }
+
+    fadeBg.style.backgroundImage = `url(${images[0]})`;
+    setInterval(updateBackground, 5000);
+  </script>
 </body>
 </html>
