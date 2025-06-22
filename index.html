@@ -136,9 +136,8 @@
     }
 
     .promo-list, .menu-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -146,7 +145,6 @@
       background-color: #2a2a2a;
       border-radius: 8px;
       padding: 15px;
-      width: 280px;
       text-align: center;
     }
 
@@ -202,9 +200,9 @@
     /* Banners laterais */
     .banner-lateral {
       position: fixed;
-      top: 80px;
+      top: 0;
       width: 120px;
-      height: 400px;
+      height: 100vh;
       background-color: #333;
       z-index: 900;
       display: flex;
@@ -225,10 +223,9 @@
     }
 
     @media (max-width: 768px) {
-      .promo-item, .menu-item {
-        width: 100%;
+      .promo-list, .menu-list {
+        grid-template-columns: 1fr;
       }
-
       .banner-lateral {
         display: none;
       }
@@ -262,12 +259,16 @@
       <h2>Promoções</h2>
       <div class="promo-list">
         <div class="promo-item">
-          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" />
+          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promo1" />
           <p>Heineken Long Neck 330ml - R$ 4,99</p>
         </div>
         <div class="promo-item">
-          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" />
+          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promo2" />
           <p>Leve 3, Pague 2!</p>
+        </div>
+        <div class="promo-item">
+          <img src="https://a-static.mlcdn.com.br/800x560/cerveja-heineken-long-neck-330ml/lojadefestacabralesousa/7893668396100/11a6c9d8a980c7abd867ef2860f1cf0d.jpeg" alt="Promo3" />
+          <p>Desconto Especial</p>
         </div>
       </div>
     </div>
@@ -276,22 +277,28 @@
       <h2>Cardápio</h2>
       <div class="menu-list">
         <div class="menu-item">
-          <img src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg" />
+          <img src="https://blogsakura.com.br/wp-content/uploads/2020/07/Espetinho_Receita_Sakura.jpg" alt="Espetinho Picanha" />
           <h3>Espetinho de Picanha</h3>
           <p>R$ 15,99</p>
           <a class="buy-button" href="#">Comprar</a>
         </div>
         <div class="menu-item">
-          <img src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7" />
+          <img src="https://th.bing.com/th/id/OIP.IYgXPOdK4DN6qIxGvUaCogHaE7" alt="Espetinho Frango" />
           <h3>Espetinho de Frango</h3>
           <p>R$ 7,99</p>
+          <a class="buy-button" href="#">Comprar</a>
+        </div>
+        <div class="menu-item">
+          <img src="https://th.bing.com/th/id/R.a424131b93a1c7e3eb3b03d35baf9178?rik=B1cD8JYBcdm9hQ&pid=ImgRaw&r=0" alt="Espetinho Coração" />
+          <h3>Espetinho de Coração</h3>
+          <p>R$ 4,99</p>
           <a class="buy-button" href="#">Comprar</a>
         </div>
       </div>
     </div>
 
     <a class="instagram-button" href="https://instagram.com/powmer_" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
       Siga-nos no Instagram
     </a>
   </div>
@@ -301,25 +308,27 @@
   </footer>
 
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const content = document.getElementById('content');
-      const fadeBg = document.getElementById('fadeBackground');
+    document.addEventListener("DOMContentLoaded", function() {
+      function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const fadeBg = document.getElementById('fadeBackground');
+        const isOpen = sidebar.classList.contains('open');
 
-      const isOpen = sidebar.classList.contains('open');
-
-      if (isOpen) {
-        sidebar.classList.remove('open');
-        content.classList.remove('blurred');
-        fadeBg.classList.remove('open');
-      } else {
-        sidebar.classList.add('open');
-        content.classList.add('blurred');
-        fadeBg.classList.add('open');
+        if (isOpen) {
+          sidebar.classList.remove('open');
+          content.classList.remove('blurred');
+          fadeBg.classList.remove('open');
+        } else {
+          sidebar.classList.add('open');
+          content.classList.add('blurred');
+          fadeBg.classList.add('open');
+        }
       }
-    }
 
-    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector('.menu-toggle').addEventListener('click', toggleSidebar);
+      document.querySelector('.close-sidebar').addEventListener('click', toggleSidebar);
+
       const fadeBg = document.getElementById("fadeBackground");
       const images = [
         "topimage(1).jpeg",
